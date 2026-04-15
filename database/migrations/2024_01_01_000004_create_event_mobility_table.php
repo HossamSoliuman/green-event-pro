@@ -1,0 +1,73 @@
+<?php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+return new class extends Migration {
+    public function up(): void {
+        Schema::create('event_mobilities', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('event_id')->unique()->constrained()->cascadeOnDelete();
+            $table->foreignId('organization_id')->constrained()->cascadeOnDelete();
+            $table->boolean('venue_accessible_by_foot')->default(false);
+            $table->boolean('venue_accessible_by_bike')->default(false);
+            $table->boolean('venue_accessible_by_public_transport')->default(false);
+            $table->decimal('venue_distance_from_int_airport_km', 8, 2)->nullable();
+            $table->decimal('venue_distance_from_int_station_km', 8, 2)->nullable();
+            $table->integer('public_transport_max_travel_time_min')->nullable();
+            $table->boolean('shuttle_service_provided')->default(false);
+            $table->text('shuttle_service_description')->nullable();
+            $table->integer('bike_parking_spaces')->default(0);
+            $table->boolean('bike_parking_secured')->default(false);
+            $table->integer('ebike_charging_stations')->default(0);
+            $table->boolean('bike_rental_available')->default(false);
+            $table->boolean('bike_repair_station')->default(false);
+            $table->boolean('bike_route_communicated')->default(false);
+            $table->string('incentive_type')->nullable();
+            $table->text('incentive_description')->nullable();
+            $table->decimal('discount_percentage', 5, 2)->nullable();
+            $table->boolean('ticket_cooperation_with_transport')->default(false);
+            $table->boolean('transport_ticket_booked_for_participants')->default(false);
+            $table->boolean('carpooling_organized')->default(false);
+            $table->boolean('group_travel_organized')->default(false);
+            $table->boolean('team_group_travel_organized')->default(false);
+            $table->boolean('public_transport_frequency_increased')->default(false);
+            $table->boolean('onsite_transport_ticket_included')->default(false);
+            $table->boolean('onsite_transport_ticket_purchasable')->default(false);
+            $table->boolean('onsite_bikes_available_free')->default(false);
+            $table->boolean('onsite_bikes_staff_free')->default(false);
+            $table->boolean('onsite_bike_rental_paid')->default(false);
+            $table->boolean('onsite_eco_taxi_available')->default(false);
+            $table->boolean('onsite_multiple_venues_walk_distance')->default(false);
+            $table->boolean('onsite_shuttle_between_venues')->default(false);
+            $table->boolean('material_transport_climate_friendly')->default(false);
+            $table->boolean('modal_split_surveyed')->default(false);
+            $table->decimal('modal_split_car_percent', 5, 2)->default(0);
+            $table->decimal('modal_split_public_transport_percent', 5, 2)->default(0);
+            $table->decimal('modal_split_bike_percent', 5, 2)->default(0);
+            $table->decimal('modal_split_flight_percent', 5, 2)->default(0);
+            $table->decimal('modal_split_other_percent', 5, 2)->default(0);
+            $table->boolean('ghg_compensation_communicated')->default(false);
+            $table->boolean('ghg_calculation_done')->default(false);
+            $table->decimal('ghg_total_kg_co2', 12, 2)->nullable();
+            $table->decimal('ghg_mobility_kg_co2', 12, 2)->nullable();
+            $table->boolean('ghg_compensation_done')->default(false);
+            $table->string('ghg_compensation_scope')->nullable();
+            $table->string('ghg_compensation_provider')->nullable();
+            $table->decimal('ghg_compensation_amount_kg', 12, 2)->nullable();
+            $table->string('transport_company_name')->nullable();
+            $table->boolean('transport_company_euro6_compliant')->default(false);
+            $table->boolean('transport_company_has_env_policy')->default(false);
+            $table->boolean('transport_company_is_regional')->default(false);
+            $table->boolean('transport_company_alternative_drive')->default(false);
+            $table->boolean('event_times_aligned_to_transport')->default(false);
+            $table->time('event_start_time')->nullable();
+            $table->time('event_end_time')->nullable();
+            $table->boolean('hybrid_replaces_flights')->default(false);
+            $table->integer('hybrid_speakers_remote')->default(0);
+            $table->boolean('hybrid_participants_motivated_online')->default(false);
+            $table->text('notes')->nullable();
+            $table->timestamps();
+        });
+    }
+    public function down(): void { Schema::dropIfExists('event_mobilities'); }
+};

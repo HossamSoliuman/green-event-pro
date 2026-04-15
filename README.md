@@ -1,58 +1,159 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# GreenEventPro
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Sustainable Event Management & Austrian UZ 62 Certification SaaS**
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🌿 Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+GreenEventPro is a multi-tenant SaaS platform for event organizers to:
+- Input sustainability data across 10 modules (Mobility, Accommodation, Venue, Procurement, Catering, etc.)
+- Automatically calculate **CO₂ footprint** with Austrian emission factors
+- Auto-score events against **UZ 62 Green Meetings/Green Events** certification criteria
+- Generate official **PDF reports** and the Green Events Austria checklist
+- Track KPIs across multiple events
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Stack:** Laravel 11 · Blade · Tailwind CSS · Alpine.js · MySQL · DomPDF
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🚀 Installation
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Requirements
+- PHP 8.3+
+- MySQL 8.0+
+- Composer 2.x
+- Node.js 20+ & npm
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Setup
 
 ```bash
-composer require laravel/boost --dev
+# 1. Clone and install PHP dependencies
+git clone <repo>
+cd greenevents
+composer install
 
-php artisan boost:install
+# 2. Environment setup
+cp .env.example .env
+php artisan key:generate
+
+# 3. Configure database in .env
+DB_DATABASE=greenevents
+DB_USERNAME=root
+DB_PASSWORD=yourpassword
+
+# 4. Run migrations and seed demo data
+php artisan migrate
+php artisan db:seed
+
+# 5. Install frontend assets (optional – CDN used by default)
+npm install && npm run build
+
+# 6. Start server
+php artisan serve
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Demo Login
+```
+Email:    demo@greenevents.at
+Password: password
+```
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📁 Project Structure
 
-## Code of Conduct
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── Auth/           RegisterController, LoginController
+│   │   ├── Modules/        10 module controllers (Mobility, Catering, etc.)
+│   │   ├── Reports/        CarbonReport, UZ62Report, Checklist
+│   │   └── Organization/   Settings, Users, Billing
+│   └── Middleware/
+│       └── TenantMiddleware.php
+├── Models/
+│   ├── Organization.php    Multi-tenant root model
+│   ├── Event.php           Core event with all relationships
+│   ├── EventMobility.php   UZ 62 Module 1 (M1–M17)
+│   ├── EventCatering.php   UZ 62 Module 6 (C1–C34, VK1–VK4)
+│   └── ...                 All 13 module models
+└── Services/
+    ├── CarbonFootprintService.php   Full CO₂ calculator
+    └── UZ62ScoringService.php       Full certification scoring engine
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+database/migrations/        18 migration files
+resources/views/
+├── layouts/app.blade.php   Main authenticated layout with sidebar
+├── auth/                   Login + Register
+├── dashboard/              KPI overview
+├── events/                 CRUD + show with 13-tab module nav
+│   └── modules/            10 module forms
+├── reports/                UZ62 scorecard + CO₂ report (screen + PDF)
+├── organization/           Settings, Users, Billing
+└── analytics/              Multi-event comparison charts
+```
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🏗️ UZ 62 Modules
 
-## License
+| Module | Criteria | Max Points |
+|--------|----------|-----------|
+| 1. Mobility | M1–M17 | 27.5 |
+| 2. Accommodation | U1–U3 | 12 |
+| 3. Venue (Building) | Va1–Va27 | 33 |
+| 3b. Venue (Outdoor) | Vb1–Vb15 | 18 |
+| 4. Procurement/Waste | B1–B33 | 32–35 |
+| 5. Exhibitors | A1–A8 | 11 |
+| 6. Catering | C1–C34, VK1–VK4 | 39.5 |
+| 7. Communication | K1–K7 | 3.5–4.5 |
+| 8. Social | S1–S13 | 13–16 |
+| 9. Technology | T1–T5 | 4 |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Passing threshold:** 28% of theoretically achievable points + ALL MUSS criteria passed
+
+---
+
+## 🔧 CO₂ Emission Factors
+
+| Source | Factor |
+|--------|--------|
+| Car (avg) | 0.210 kg CO₂/km/person |
+| Short-haul flight | 0.255 kg CO₂/km/person |
+| Train (AT/DE) | 0.032 kg CO₂/km/person |
+| AT electricity grid | 0.158 kg CO₂/kWh |
+| Hotel night (avg) | 18.0 kg CO₂/night |
+| Hotel night (eco-certified) | 8.5 kg CO₂/night |
+| Standard catering | 7.0 kg CO₂/person/day |
+| Vegetarian catering | 2.5 kg CO₂/person/day |
+| Vegan catering | 1.7 kg CO₂/person/day |
+
+---
+
+## 💳 Subscription Plans
+
+| Plan | Price | Events/Year | Users |
+|------|-------|-------------|-------|
+| Free | €0 | 2 | 1 |
+| Starter | €49/mo | 5 | 1 |
+| Professional | €149/mo | 25 | 5 |
+| Enterprise | €399/mo | Unlimited | 20 |
+
+---
+
+## 📋 Key Implementation Notes
+
+1. **MUSS Blocking:** If ANY MUSS criterion fails, certification is blocked regardless of SOLL points
+2. **Auto-satisfy:** UZ 200 certified venues automatically get 15.5 points (Va criteria)
+3. **Hybrid events:** M17 becomes MUSS when `events.is_hybrid = true`
+4. **Regional definition:** Within ~150km of venue location (per UZ 62 footnotes)
+5. **Points threshold:** 28% of *theoretically achievable* points (not total possible)
+6. **Historical records:** Carbon and UZ62 score records are appended, never overwritten
+
+---
+
+## 📄 License
+
+MIT License — Based on: Österreichisches Umweltzeichen UZ 62 v5.1 (July 2022)
