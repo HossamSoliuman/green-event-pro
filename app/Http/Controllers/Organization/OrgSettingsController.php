@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Organization;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Organization\UpdateOrgSettingsRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,18 +14,10 @@ class OrgSettingsController extends Controller
         return view('organization.settings', ['organization' => Auth::user()->organization]);
     }
 
-    public function update(Request $request)
+    public function update(UpdateOrgSettingsRequest $request)
     {
         $org = Auth::user()->organization;
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'phone' => 'nullable|string|max:50',
-            'address' => 'nullable|string|max:500',
-            'country' => 'nullable|string|max:2',
-            'vat_number' => 'nullable|string|max:50',
-            'website' => 'nullable|url|max:255',
-        ]);
+        $validated = $request->validated();
         $org->update($validated);
         return back()->with('success', 'Einstellungen gespeichert.');
     }

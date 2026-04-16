@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Services\CarbonFootprintService;
 use App\Services\UZ62ScoringService;
+use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,24 +33,9 @@ class EventController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreEventRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'type' => 'required|in:' . implode(',', array_keys(Event::TYPES)),
-            'description' => 'nullable|string',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
-            'expected_participants' => 'required|integer|min:1',
-            'venue_name' => 'required|string|max:255',
-            'venue_address' => 'nullable|string|max:255',
-            'venue_city' => 'required|string|max:255',
-            'venue_country' => 'required|string|max:2',
-            'venue_lat' => 'nullable|numeric',
-            'venue_lng' => 'nullable|numeric',
-            'is_outdoor' => 'boolean',
-            'is_hybrid' => 'boolean',
-        ]);
+        $validated = $request->validated();
 
         $validated['organization_id'] = Auth::user()->organization_id;
         $validated['created_by'] = Auth::id();
@@ -86,27 +73,11 @@ class EventController extends Controller
         ]);
     }
 
-    public function update(Request $request, Event $event)
+    public function update(UpdateEventRequest $request, Event $event)
     {
         $this->authorizeEvent($event);
 
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'type' => 'required|in:' . implode(',', array_keys(Event::TYPES)),
-            'description' => 'nullable|string',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
-            'expected_participants' => 'required|integer|min:1',
-            'venue_name' => 'required|string|max:255',
-            'venue_address' => 'nullable|string|max:255',
-            'venue_city' => 'required|string|max:255',
-            'venue_country' => 'required|string|max:2',
-            'venue_lat' => 'nullable|numeric',
-            'venue_lng' => 'nullable|numeric',
-            'is_outdoor' => 'boolean',
-            'is_hybrid' => 'boolean',
-            'status' => 'in:draft,active,completed,certified',
-        ]);
+        $validated = $request->validated();
 
         $validated['is_outdoor'] = $request->boolean('is_outdoor');
         $validated['is_hybrid'] = $request->boolean('is_hybrid');

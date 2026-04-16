@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\EventDocument;
+use App\Http\Requests\StoreDocumentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
-    public function store(Request $request, Event $event)
+    public function store(StoreDocumentRequest $request, Event $event)
     {
         if ($event->organization_id !== Auth::user()->organization_id) abort(403);
-        $request->validate(['file' => 'required|file|max:10240', 'module' => 'nullable|string']);
+        // The file validation has moved to StoreDocumentRequest
         $path = $request->file('file')->store("events/{$event->id}/documents");
         EventDocument::create([
             'event_id' => $event->id,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Modules;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\EventAccommodation;
+use App\Http\Requests\Modules\StoreAccommodationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,20 +18,10 @@ class AccommodationController extends Controller
         return view('events.modules.accommodation', compact('event', 'accommodations'));
     }
 
-    public function store(Request $request, Event $event)
+    public function store(StoreAccommodationRequest $request, Event $event)
     {
         $this->checkAccess($event);
-        $validated = $request->validate([
-            'hotel_name' => 'required|string|max:255',
-            'hotel_city' => 'nullable|string|max:255',
-            'hotel_country' => 'nullable|string|max:2',
-            'certification_type' => 'nullable|string',
-            'has_env_certification' => 'boolean',
-            'hotel_informed_of_green_event' => 'boolean',
-            'distance_to_venue_km' => 'nullable|numeric',
-            'contingent_reserved' => 'nullable|integer',
-            'nights_reserved' => 'nullable|integer',
-        ]);
+        $validated = $request->validated();
 
         $validated['event_id'] = $event->id;
         $validated['organization_id'] = $event->organization_id;
