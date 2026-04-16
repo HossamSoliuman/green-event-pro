@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Analytics')
+@section('title', __('Analytics'))
 @section('page-title', 'Multi-Event Analytics')
 @section('header-actions')
     <a href="{{ route('analytics.export') }}" class="btn-secondary">
@@ -34,13 +34,13 @@
             <thead>
                 <tr class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100">
                     <th class="pb-3 pr-4">Veranstaltung</th>
-                    <th class="pb-3 pr-4">Datum</th>
+                    <th class="pb-3 pr-4">{{ __('Date') }}</th>
                     <th class="pb-3 pr-4">Typ</th>
-                    <th class="pb-3 pr-4">TN</th>
+                    <th class="pb-3 pr-4">{{ __('Participants') }}</th>
                     <th class="pb-3 pr-4">CO₂ Gesamt</th>
                     <th class="pb-3 pr-4">CO₂/Person</th>
                     <th class="pb-3 pr-4">UZ 62 Score</th>
-                    <th class="pb-3">Status</th>
+                    <th class="pb-3">{{ __('Status') }}</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-50">

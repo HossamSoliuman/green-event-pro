@@ -35,8 +35,8 @@
             <textarea name="notes" rows="3" class="form-input">{{ $module->notes }}</textarea>
         </div>
         <div class="flex gap-3 pt-2">
-            <button type="submit" class="btn-primary">Speichern</button>
-            <a href="{{ route('events.show', $event) }}" class="btn-secondary">Abbrechen</a>
+            <button type="submit" class="btn-primary">{{ __('Save') }}</button>
+            <a href="{{ route('events.show', $event) }}" class="btn-secondary">{{ __('Cancel') }}</a>
         </div>
     </div>
 </form>

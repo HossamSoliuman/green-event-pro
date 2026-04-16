@@ -10,7 +10,7 @@
         <h2 class="text-lg font-bold text-gray-900 mb-4">{{ $event->title }}</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div><p class="text-xs text-gray-500">Typ</p><p class="font-medium">{{ $event->type_label }}</p></div>
-            <div><p class="text-xs text-gray-500">Datum</p><p class="font-medium">{{ $event->start_date?->format('d.m.Y') }}</p></div>
+            <div><p class="text-xs text-gray-500">{{ __('Date') }}</p><p class="font-medium">{{ $event->start_date?->format('d.m.Y') }}</p></div>
             <div><p class="text-xs text-gray-500">Ort</p><p class="font-medium">{{ $event->venue_city }}</p></div>
             <div><p class="text-xs text-gray-500">Teilnehmer</p><p class="font-medium">{{ number_format($event->expected_participants) }}</p></div>
         </div>

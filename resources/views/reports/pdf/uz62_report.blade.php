@@ -38,7 +38,7 @@ footer { margin-top: 20px; border-top: 1px solid #e5e7eb; padding-top: 8px; colo
         <table>
             <tr><td><strong>Titel</strong></td><td>{{ $event->title }}</td></tr>
             <tr><td><strong>Typ</strong></td><td>{{ $event->type_label }}</td></tr>
-            <tr><td><strong>Datum</strong></td><td>{{ $event->start_date?->format('d.m.Y') }} – {{ $event->end_date?->format('d.m.Y') }}</td></tr>
+            <tr><td><strong>{{ __('Date') }}</strong></td><td>{{ $event->start_date?->format('d.m.Y') }} – {{ $event->end_date?->format('d.m.Y') }}</td></tr>
             <tr><td><strong>Ort</strong></td><td>{{ $event->venue_name }}, {{ $event->venue_city }}</td></tr>
             <tr><td><strong>Teilnehmer</strong></td><td>{{ number_format($event->expected_participants) }}</td></tr>
         </table>
@@ -69,7 +69,7 @@ footer { margin-top: 20px; border-top: 1px solid #e5e7eb; padding-top: 8px; colo
 @else
     <p class="fail">✗ Folgende MUSS-Kriterien wurden NICHT erfüllt und müssen vor der Zertifizierung behoben werden:</p>
     <table>
-        <tr><th>Kriterium-Code</th><th>Status</th></tr>
+        <tr><th>Kriterium-Code</th><th>{{ __('Status') }}</th></tr>
         @foreach($details['muss_failed'] as $code)
         <tr>
             <td><span class="muss-tag">MUSS</span> {{ $code }}</td>

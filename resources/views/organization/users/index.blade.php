@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Benutzer')
+@section('title', __('Users'))
 @section('page-title', 'Benutzer verwalten')
 @section('content')
 <div class="max-w-3xl space-y-6">
@@ -11,7 +11,7 @@
     <table class="w-full text-sm">
         <thead>
             <tr class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100">
-                <th class="pb-3">Name</th>
+                <th class="pb-3">{{ __('Name') }}</th>
                 <th class="pb-3">E-Mail</th>
                 <th class="pb-3">Rolle</th>
                 <th class="pb-3">Erstellt</th>

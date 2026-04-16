@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" class="h-full">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,19 @@
                 </svg>
             </div>
             <h1 class="text-2xl font-bold text-gray-900">GreenEventPro</h1>
-            <p class="text-sm text-gray-500 mt-1">Nachhaltige Veranstaltungen · UZ 62 Zertifizierung</p>
+            <p class="text-sm text-gray-500 mt-1">{{ __('Sustainable Events · UZ 62 Certification') }}</p>
+            
+            <!-- Language Switcher -->
+            <div class="flex items-center justify-center gap-2 mt-4">
+                <a href="{{ route('locale.switch', 'de') }}" 
+                   class="px-2 py-1 text-xs font-semibold rounded-md transition-colors {{ app()->getLocale() == 'de' ? 'bg-green-600 text-white shadow-sm' : 'text-gray-500 hover:text-gray-700 bg-gray-100' }}">
+                    DE
+                </a>
+                <a href="{{ route('locale.switch', 'en') }}" 
+                   class="px-2 py-1 text-xs font-semibold rounded-md transition-colors {{ app()->getLocale() == 'en' ? 'bg-green-600 text-white shadow-sm' : 'text-gray-500 hover:text-gray-700 bg-gray-100' }}">
+                    EN
+                </a>
+            </div>
         </div>
 
         <div class="bg-white rounded-2xl shadow-xl p-8">
@@ -30,7 +42,7 @@
         </div>
 
         <p class="text-center text-xs text-gray-400 mt-6">
-            &copy; {{ date('Y') }} GreenEventPro — Österreichisches Umweltzeichen UZ 62
+            &copy; {{ date('Y') }} GreenEventPro — {{ __('Austrian Ecolabel UZ 62') }}
         </p>
     </div>
 </body>

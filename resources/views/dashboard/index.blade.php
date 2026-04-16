@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Dashboard')
-@section('page-title', 'Dashboard')
+@section('title', __('Dashboard'))
+@section('page-title', __('Dashboard'))
 @section('header-actions')
     <a href="{{ route('events.create') }}" class="btn-primary">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-        Neue Veranstaltung
+        {{ __('New Event') }}
     </a>
 @endsection
 @section('content')
@@ -14,7 +14,7 @@
     <div class="card">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Veranstaltungen</p>
+                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Events') }}</p>
                 <p class="text-3xl font-bold text-gray-900 mt-1">{{ $totalEvents }}</p>
             </div>
             <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
@@ -25,7 +25,7 @@
     <div class="card">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Zertifiziert</p>
+                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Certified') }}</p>
                 <p class="text-3xl font-bold text-green-600 mt-1">{{ $certifiedEvents }}</p>
             </div>
             <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center">
@@ -36,7 +36,7 @@
     <div class="card">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Gesamt CO₂</p>
+                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Total CO2') }}</p>
                 <p class="text-3xl font-bold text-gray-900 mt-1">{{ number_format($totalCo2 / 1000, 1) }}<span class="text-base font-medium text-gray-500 ml-1">t</span></p>
             </div>
             <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center">
@@ -47,7 +47,7 @@
     <div class="card">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Ø UZ 62 Score</p>
+                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Avg. UZ 62 Score') }}</p>
                 <p class="text-3xl font-bold text-gray-900 mt-1">{{ $avgScore ? number_format($avgScore, 1) : '–' }}<span class="text-base font-medium text-gray-500 ml-1">%</span></p>
             </div>
             <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center">
@@ -62,8 +62,8 @@
 <div class="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start gap-3">
     <svg class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
     <div>
-        <p class="text-sm font-semibold text-amber-800">Kostenloser Plan – Upgrade für mehr Features</p>
-        <p class="text-sm text-amber-700 mt-1">Sie nutzen aktuell den kostenlosen Plan (max. 2 Veranstaltungen). <a href="{{ route('organization.billing') }}" class="font-medium underline">Jetzt upgraden →</a></p>
+        <p class="text-sm font-semibold text-amber-800">{{ __('Free Plan – Upgrade for more features') }}</p>
+        <p class="text-sm text-amber-700 mt-1">{{ __('You are currently using the free plan (max. 2 events).') }} <a href="{{ route('organization.billing') }}" class="font-medium underline">{{ __('Upgrade now') }} &rarr;</a></p>
     </div>
 </div>
 @endif
@@ -71,28 +71,28 @@
 {{-- Recent Events --}}
 <div class="card">
     <div class="flex items-center justify-between mb-4">
-        <h2 class="text-base font-semibold text-gray-900">Aktuelle Veranstaltungen</h2>
-        <a href="{{ route('events.index') }}" class="text-sm text-green-600 hover:text-green-700 font-medium">Alle anzeigen →</a>
+        <h2 class="text-base font-semibold text-gray-900">{{ __('Recent Events') }}</h2>
+        <a href="{{ route('events.index') }}" class="text-sm text-green-600 hover:text-green-700 font-medium">{{ __('Show all') }} &rarr;</a>
     </div>
     @if($events->isEmpty())
         <div class="text-center py-12">
             <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg class="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
             </div>
-            <p class="text-gray-500 text-sm">Noch keine Veranstaltungen vorhanden.</p>
-            <a href="{{ route('events.create') }}" class="btn-primary mt-4 inline-flex">Erste Veranstaltung erstellen</a>
+            <p class="text-gray-500 text-sm">{{ __('No events yet.') }}</p>
+            <a href="{{ route('events.create') }}" class="btn-primary mt-4 inline-flex">{{ __('Create first event') }}</a>
         </div>
     @else
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead>
                     <tr class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100">
-                        <th class="pb-3 pr-4">Veranstaltung</th>
-                        <th class="pb-3 pr-4">Datum</th>
-                        <th class="pb-3 pr-4">TN</th>
+                        <th class="pb-3 pr-4">{{ __('Event') }}</th>
+                        <th class="pb-3 pr-4">{{ __('Date') }}</th>
+                        <th class="pb-3 pr-4">{{ __('Participants') }}</th>
                         <th class="pb-3 pr-4">UZ 62</th>
                         <th class="pb-3 pr-4">CO₂/P</th>
-                        <th class="pb-3">Status</th>
+                        <th class="pb-3">{{ __('Status') }}</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-50">

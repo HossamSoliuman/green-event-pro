@@ -193,7 +193,7 @@
 
     <div class="flex gap-3">
         <button type="submit" class="btn-primary">Modul speichern</button>
-        <a href="{{ route('events.show', $event) }}" class="btn-secondary">Abbrechen</a>
+        <a href="{{ route('events.show', $event) }}" class="btn-secondary">{{ __('Cancel') }}</a>
     </div>
 
     </div>

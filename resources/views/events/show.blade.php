@@ -190,7 +190,7 @@
                 <div class="grid grid-cols-3 gap-3 mb-4">
                     <div class="text-center bg-gray-50 rounded-lg p-3">
                         <div class="text-lg font-bold text-gray-900">{{ number_format($cr->co2_total / 1000, 2) }}t</div>
-                        <div class="text-xs text-gray-500">Gesamt CO₂</div>
+                        <div class="text-xs text-gray-500">{{ __('Total CO2') }}</div>
                     </div>
                     <div class="text-center bg-gray-50 rounded-lg p-3">
                         <div class="text-lg font-bold {{ $cr->co2_per_person <= 30 ? 'text-green-600' : 'text-orange-500' }}">{{ number_format($cr->co2_per_person, 1) }}kg</div>
@@ -350,11 +350,11 @@
                     <select name="module" class="form-select w-40">
                         <option value="">Allgemein</option>
                         <option value="mobility">Mobilität</option>
-                        <option value="accommodation">Unterkunft</option>
-                        <option value="venue">Veranstaltungsort</option>
-                        <option value="procurement">Beschaffung</option>
+                        <option value="accommodation">{{ __('Accommodation') }}</option>
+                        <option value="venue">{{ __('Venue') }}</option>
+                        <option value="procurement">{{ __('Procurement') }}</option>
                         <option value="catering">Verpflegung</option>
-                        <option value="communication">Kommunikation</option>
+                        <option value="communication">{{ __('Communication') }}</option>
                     </select>
                 </div>
                 <button type="submit" class="btn-primary">Hochladen</button>

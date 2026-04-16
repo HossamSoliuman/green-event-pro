@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 @section('title', 'Registrieren')
 @section('content')
-<h2 class="text-xl font-bold text-gray-900 mb-2">Konto erstellen</h2>
+<h2 class="text-xl font-bold text-gray-900 mb-2">{{ __('Create account') }}</h2>
 <p class="text-sm text-gray-500 mb-6">Starten Sie mit nachhaltigen Veranstaltungen nach UZ 62.</p>
 <form method="POST" action="{{ route('register') }}" class="space-y-4">
     @csrf
@@ -36,6 +36,6 @@
     </button>
 </form>
 <p class="text-center text-sm text-gray-500 mt-4">
-    Bereits registriert? <a href="{{ route('login') }}" class="text-green-600 font-medium hover:underline">Anmelden</a>
+    Bereits registriert? <a href="{{ route('login') }}" class="text-green-600 font-medium hover:underline">{{ __('Sign in') }}</a>
 </p>
 @endsection

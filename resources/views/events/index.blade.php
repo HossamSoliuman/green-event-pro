@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Veranstaltungen')
-@section('page-title', 'Veranstaltungen')
+@section('title', __('Events'))
+@section('page-title', __('Events'))
 @section('header-actions')
     <a href="{{ route('events.create') }}" class="btn-primary">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-        Neue Veranstaltung
+        {{ __('New Event') }}
     </a>
 @endsection
 @section('content')
@@ -14,9 +14,9 @@
         <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-10 h-10 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         </div>
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Noch keine Veranstaltungen</h3>
-        <p class="text-gray-500 text-sm mb-6">Erstellen Sie Ihre erste nachhaltige Veranstaltung und starten Sie mit der UZ 62 Zertifizierung.</p>
-        <a href="{{ route('events.create') }}" class="btn-primary">Erste Veranstaltung erstellen</a>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ __('No events yet') }}</h3>
+        <p class="text-gray-500 text-sm mb-6">{{ __('Create your first sustainable event and start with the UZ 62 certification.') }}</p>
+        <a href="{{ route('events.create') }}" class="btn-primary">{{ __('Create first event') }}</a>
     </div>
 @else
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -50,9 +50,9 @@
             <div class="space-y-2">
                 <div>
                     <div class="flex justify-between text-xs mb-1">
-                        <span class="text-gray-500">UZ 62 Score</span>
+                        <span class="text-gray-500">{{ __('UZ 62 Score') }}</span>
                         <span class="{{ $event->uz62_passed ? 'text-green-600 font-semibold' : 'text-gray-600' }}">
-                            {{ $event->uz62_percentage ? number_format($event->uz62_percentage, 1).'%' : 'Nicht berechnet' }}
+                            {{ $event->uz62_percentage ? number_format($event->uz62_percentage, 1).'%' : __('Not calculated') }}
                         </span>
                     </div>
                     <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">

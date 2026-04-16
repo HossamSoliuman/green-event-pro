@@ -26,6 +26,18 @@ use App\Http\Controllers\Reports\UZ62ReportController;
 use App\Http\Controllers\ScoreController;
 use Illuminate\Support\Facades\Route;
 
+// Localization
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'de'])) {
+        session(['locale' => $locale]);
+        if (auth()->check()) {
+            auth()->user()->update(['locale' => $locale]);
+        }
+    }
+    return back();
+})->name('locale.switch');
+
+
 // Public
 Route::get('/', fn () => view('welcome'))->name('home');
 Route::get('/pricing', fn () => view('pricing'))->name('pricing');

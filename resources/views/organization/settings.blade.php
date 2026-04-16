@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Einstellungen')
+@section('title', __('Settings'))
 @section('page-title', 'Organisationseinstellungen')
 @section('content')
 <div class="max-w-2xl space-y-6">
@@ -22,15 +22,15 @@
                 <input type="text" name="phone" value="{{ old('phone', $organization->phone) }}" class="form-input">
             </div>
             <div class="col-span-2">
-                <label class="form-label">Adresse</label>
+                <label class="form-label">{{ __('Address') }}</label>
                 <input type="text" name="address" value="{{ old('address', $organization->address) }}" class="form-input">
             </div>
             <div>
                 <label class="form-label">Land</label>
                 <select name="country" class="form-select">
-                    <option value="AT" {{ ($organization->country ?? 'AT') === 'AT' ? 'selected' : '' }}>Österreich</option>
-                    <option value="DE" {{ ($organization->country ?? '') === 'DE' ? 'selected' : '' }}>Deutschland</option>
-                    <option value="CH" {{ ($organization->country ?? '') === 'CH' ? 'selected' : '' }}>Schweiz</option>
+                    <option value="AT" {{ ($organization->country ?? 'AT') === 'AT' ? 'selected' : '' }}>{{ __('Austria') }}</option>
+                    <option value="DE" {{ ($organization->country ?? '') === 'DE' ? 'selected' : '' }}>{{ __('Germany') }}</option>
+                    <option value="CH" {{ ($organization->country ?? '') === 'CH' ? 'selected' : '' }}>{{ __('Switzerland') }}</option>
                 </select>
             </div>
             <div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Abonnement')
+@section('title', __('Subscription'))
 @section('page-title', 'Abonnement & Abrechnung')
 @section('content')
 <div class="max-w-4xl">

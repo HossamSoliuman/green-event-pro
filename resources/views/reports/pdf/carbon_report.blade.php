@@ -30,7 +30,7 @@ footer { margin-top: 20px; border-top: 1px solid #e5e7eb; padding-top: 8px; colo
 </div>
 
 <div class="kpi-grid">
-    <div class="kpi-cell"><div class="kpi-val">{{ number_format($report->co2_total / 1000, 2) }}t</div><div class="kpi-label">Gesamt CO₂</div></div>
+    <div class="kpi-cell"><div class="kpi-val">{{ number_format($report->co2_total / 1000, 2) }}t</div><div class="kpi-label">{{ __('Total CO2') }}</div></div>
     <div class="kpi-cell"><div class="kpi-val">{{ number_format($report->co2_per_person, 1) }}kg</div><div class="kpi-label">CO₂ pro Person</div></div>
     <div class="kpi-cell"><div class="kpi-val">{{ number_format($report->co2_compensation / 1000, 2) }}t</div><div class="kpi-label">Kompensiert</div></div>
     <div class="kpi-cell"><div class="kpi-val">{{ number_format($report->co2_net / 1000, 2) }}t</div><div class="kpi-label">Netto CO₂</div></div>
