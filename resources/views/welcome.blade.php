@@ -39,7 +39,7 @@
                     EN
                 </a>
             </div>
-            <a href="{{ route('pricing') }}" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Pricing') }}</a>
+            {{-- <a href="{{ route('pricing') }}" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Pricing') }}</a> --}}
             <a href="{{ route('login') }}" class="text-sm text-gray-600 hover:text-gray-900">{{ __('Sign in') }}</a>
             <a href="{{ route('register') }}"
                 class="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700">{{ __('Start for free') }}</a>
@@ -64,10 +64,10 @@
                 class="px-6 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors shadow-lg shadow-green-200">
                 {{ __('Start now for free') }} →
             </a>
-            <a href="{{ route('pricing') }}"
+            {{-- <a href="{{ route('pricing') }}"
                 class="px-6 py-3 bg-white text-gray-700 font-semibold rounded-xl border border-gray-200 hover:bg-gray-50 transition-colors">
                 {{ __('View pricing') }}
-            </a>
+            </a> --}}
         </div>
     </section>
 
@@ -102,7 +102,7 @@
 
     <footer class="border-t border-gray-100 py-8 text-center text-sm text-gray-400">
         &copy; {{ date('Y') }} GreenEventPro · {{ __('Austrian Ecolabel UZ 62') }} · <a
-            href="{{ route('pricing') }}" class="hover:text-gray-600">{{ __('Pricing') }}</a>
+            {{-- href="{{ route('pricing') }}" class="hover:text-gray-600">{{ __('Pricing') }}</a> --}}
     </footer>
 </body>
 
