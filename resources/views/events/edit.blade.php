@@ -147,15 +147,15 @@
                     <a href="{{ route('events.show', $event) }}" class="btn-secondary">
                         {{ __('Cancel') }}
                     </a>
+            </form>
 
-                    <form method="POST" action="{{ route('events.destroy', $event) }}" class="ml-auto"
-                        onsubmit="return confirm('{{ __('Are you sure you want to delete this event?') }}')">
-                        @csrf @method('DELETE')
-                        <button type="submit" class="btn-danger">{{ __('Delete') }}</button>
-                    </form>
-                </div>
-
+            <form method="POST" action="{{ route('events.destroy', $event) }}" class="ml-auto"
+                onsubmit="return confirm('{{ __('Are you sure you want to delete this event?') }}')">
+                @csrf @method('DELETE')
+                <button type="submit" class="btn-danger">{{ __('Delete') }}</button>
             </form>
         </div>
+
+    </div>
     </div>
 @endsection
