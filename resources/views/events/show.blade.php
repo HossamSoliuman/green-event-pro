@@ -72,23 +72,23 @@
         </div>
 
         {{-- Module Navigation Tabs --}}
-        <div class="mb-4 overflow-x-auto">
-            <div class="flex gap-1 bg-white border border-gray-200 rounded-xl p-1 w-max min-w-full">
+        <div class="mb-4">
+            <div class="flex flex-wrap gap-1 bg-white border border-gray-200 rounded-xl p-1">
                 @php
                     $tabs = [
-                        'overview' => ['icon' => '📊', 'label' => __('Übersicht')],
-                        'mobility' => ['icon' => '🚆', 'label' => __('Mobilität')],
-                        'accommodation' => ['icon' => '🏨', 'label' => __('Unterkunft')],
-                        'venue' => ['icon' => '🏛️', 'label' => __('Veranstaltungsort')],
-                        'procurement' => ['icon' => '♻️', 'label' => __('Beschaffung')],
-                        'exhibitors' => ['icon' => '🏢', 'label' => __('Aussteller')],
-                        'catering' => ['icon' => '🍽️', 'label' => __('Verpflegung')],
-                        'communication' => ['icon' => '📣', 'label' => __('Kommunikation')],
-                        'social' => ['icon' => '🤝', 'label' => __('Soziales')],
-                        'technology' => ['icon' => '🔊', 'label' => __('Technik')],
-                        'tv_production' => ['icon' => '📺', 'label' => __('TV/Live')],
-                        'reports' => ['icon' => '📋', 'label' => __('Berichte')],
-                        'documents' => ['icon' => '📁', 'label' => __('Dokumente')],
+                        'overview' => ['label' => __('Übersicht'), 'color' => 'text-blue-500'],
+                        'mobility' => ['label' => __('Mobilität'), 'color' => 'text-green-500'],
+                        'accommodation' => ['label' => __('Unterkunft'), 'color' => 'text-indigo-500'],
+                        'venue' => ['label' => __('Veranstaltungsort'), 'color' => 'text-purple-500'],
+                        'procurement' => ['label' => __('Beschaffung'), 'color' => 'text-teal-500'],
+                        'exhibitors' => ['label' => __('Aussteller'), 'color' => 'text-slate-500'],
+                        'catering' => ['label' => __('Verpflegung'), 'color' => 'text-orange-500'],
+                        'communication' => ['label' => __('Kommunikation'), 'color' => 'text-yellow-500'],
+                        'social' => ['label' => __('Soziales'), 'color' => 'text-pink-500'],
+                        'technology' => ['label' => __('Technik'), 'color' => 'text-cyan-500'],
+                        'tv_production' => ['label' => __('TV/Live'), 'color' => 'text-red-500'],
+                        'reports' => ['label' => __('Berichte'), 'color' => 'text-violet-500'],
+                        'documents' => ['label' => __('Dokumente'), 'color' => 'text-amber-500'],
                     ];
                 @endphp
                 @foreach ($tabs as $key => $tab)
@@ -96,13 +96,86 @@
                         :class="tab === '{{ $key }}' ? 'bg-green-600 text-white shadow-sm' :
                             'text-gray-600 hover:bg-gray-50'"
                         class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all">
-                        <span>{{ $tab['icon'] }}</span>
+                        <span :class="tab === '{{ $key }}' ? 'text-white' : '{{ $tab['color'] }}'">
+                            @if ($key === 'overview')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            @elseif($key === 'mobility')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                </svg>
+                            @elseif($key === 'accommodation')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                            @elseif($key === 'venue')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            @elseif($key === 'procurement')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                            @elseif($key === 'exhibitors')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
+                            @elseif($key === 'catering')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            @elseif($key === 'communication')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                                </svg>
+                            @elseif($key === 'social')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            @elseif($key === 'technology')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            @elseif($key === 'tv_production')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+                                </svg>
+                            @elseif($key === 'reports')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            @elseif($key === 'documents')
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                                </svg>
+                            @endif
+                        </span>
                         <span>{{ $tab['label'] }}</span>
                     </button>
                 @endforeach
             </div>
         </div>
-
         {{-- Overview Tab --}}
         <div x-show="tab === 'overview'" x-cloak>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -216,7 +289,8 @@
                         @php $cr = $event->latestCarbonReport; @endphp
                         <div class="grid grid-cols-3 gap-3 mb-4">
                             <div class="text-center bg-gray-50 rounded-lg p-3">
-                                <div class="text-lg font-bold text-gray-900">{{ number_format($cr->co2_total / 1000, 2) }}t
+                                <div class="text-lg font-bold text-gray-900">
+                                    {{ number_format($cr->co2_total / 1000, 2) }}t
                                 </div>
                                 <div class="text-xs text-gray-500">{{ __('Total CO2') }}</div>
                             </div>
