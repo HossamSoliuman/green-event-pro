@@ -10,7 +10,7 @@
 @endsection
 @section('content')
 
-{{-- Overall result --}}
+
 <div class="card mb-6">
     <div class="flex flex-wrap items-center gap-8">
         <div class="text-center">
@@ -56,7 +56,7 @@
     </div>
 </div>
 
-{{-- Failed MUSS criteria warning --}}
+
 @if(!$details['muss_passed'] && !empty($details['muss_failed']))
 <div class="card mb-6 border-red-200 bg-red-50">
     <h3 class="text-sm font-semibold text-red-800 mb-3">
@@ -71,7 +71,7 @@
 </div>
 @endif
 
-{{-- Section breakdown --}}
+
 <div class="space-y-4">
     @php
     $sectionLabels = [
@@ -113,7 +113,7 @@
             </div>
         </button>
 
-        {{-- Progress bar --}}
+        
         <div class="mt-3">
             <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
                 <div class="h-full rounded-full {{ empty($section['muss_failed']) ? 'bg-green-400' : 'bg-red-400' }}"
@@ -159,7 +159,7 @@
     @endforeach
 </div>
 
-{{-- Certification CTA --}}
+
 @if($details['passed'])
 <div class="mt-6 card bg-green-50 border-green-200 text-center">
     <div class="text-3xl mb-2">🏆</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" class="h-full bg-gray-50">
+<html lang="{{ app()->getLocale() }}" class="bg-gray-50">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,12 +46,12 @@
     </style>
     @stack('styles')
 </head>
-<body class="h-full font-sans" x-data="{ sidebarOpen: false }">
+<body class="font-sans" x-data="{ sidebarOpen: false }">
 
-<div class="flex h-full">
-    <!-- Sidebar -->
+<div class="flex min-h-screen">
+    
     <aside class="hidden lg:flex flex-col w-64 bg-white border-r border-gray-200 fixed inset-y-0 z-50">
-        <!-- Logo -->
+        
         <div class="flex items-center gap-2 px-6 py-5 border-b border-gray-100">
             <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
                 <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,7 +61,7 @@
             <span class="font-bold text-gray-900 text-sm">GreenEventPro</span>
         </div>
 
-        <!-- Org name -->
+        
         <div class="px-4 py-3 border-b border-gray-100">
             <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">{{ __('Organization') }}</p>
             <p class="text-sm font-semibold text-gray-700 truncate mt-0.5">{{ $currentOrganization->name ?? '' }}</p>
@@ -70,7 +70,7 @@
             </span>
         </div>
 
-        <!-- Nav -->
+        
         <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
             <a href="{{ route('dashboard') }}" class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
@@ -96,13 +96,10 @@
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                 {{ __('Users') }}
             </a>
-            {{-- <a href="{{ route('organization.billing') }}" class="sidebar-link {{ request()->routeIs('organization.billing') ? 'active' : '' }}">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                {{ __('Subscription') }}
-            </a> --}}
+            
         </nav>
 
-        <!-- User -->
+        
         <div class="px-4 py-4 border-t border-gray-100">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-700 font-semibold text-sm">
@@ -122,10 +119,10 @@
         </div>
     </aside>
 
-    <!-- Mobile Sidebar -->
+    
     <div class="lg:hidden" x-show="sidebarOpen" @click="sidebarOpen = false" class="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
     <aside x-show="sidebarOpen" class="lg:hidden fixed inset-y-0 left-0 w-64 bg-white z-50 overflow-y-auto">
-        <!-- Logo -->
+        
         <div class="flex items-center gap-2 px-6 py-5 border-b border-gray-100">
             <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
                 <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -138,7 +135,7 @@
             </button>
         </div>
 
-        <!-- Org name -->
+        
         <div class="px-4 py-3 border-b border-gray-100">
             <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">{{ __('Organization') }}</p>
             <p class="text-sm font-semibold text-gray-700 truncate mt-0.5">{{ $currentOrganization->name ?? '' }}</p>
@@ -147,7 +144,7 @@
             </span>
         </div>
 
-        <!-- Nav -->
+        
         <nav class="px-3 py-4 space-y-1">
             <a href="{{ route('dashboard') }}" @click="sidebarOpen = false" class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
@@ -175,7 +172,7 @@
             </a>
         </nav>
 
-        <!-- User -->
+        
         <div class="px-4 py-4 border-t border-gray-100">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-700 font-semibold text-sm">
@@ -195,9 +192,9 @@
         </div>
     </aside>
 
-    <!-- Main -->
+    
     <div class="flex-1 lg:pl-64 flex flex-col min-h-screen">
-        <!-- Top bar -->
+        
         <header class="bg-white border-b border-gray-200 px-4 lg:px-8 py-4 flex items-center justify-between sticky top-0 z-40 min-h-16 flex-wrap gap-2 sm:flex-nowrap">
             <div class="flex items-center gap-3 flex-1 min-w-0">
                 <button @click="sidebarOpen = !sidebarOpen" class="lg:hidden text-gray-500 flex-shrink-0">
@@ -206,7 +203,7 @@
                 <h1 class="text-lg font-semibold text-gray-900 truncate">@yield('page-title', 'Dashboard')</h1>
             </div>
             <div class="flex items-center gap-2 sm:gap-3 w-full sm:w-auto sm:order-3 order-3">
-                <!-- Language Switcher -->
+                
                 <div class="flex items-center gap-1 bg-gray-100 rounded-lg p-1 flex-shrink-0">
                     <a href="{{ route('locale.switch', 'de') }}"
                        class="px-2 py-1 text-xs font-semibold rounded-md transition-colors {{ app()->getLocale() == 'de' ? 'bg-white text-green-700 shadow-sm' : 'text-gray-500 hover:text-gray-700' }}">
@@ -226,7 +223,7 @@
             </div>
         </header>
 
-        <!-- Flash messages -->
+        
         @if(session('success'))
         <div class="mx-4 lg:mx-8 mt-4 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3 text-green-800 text-sm" x-data x-init="setTimeout(() => $el.remove(), 5000)">
             <svg class="w-5 h-5 flex-shrink-0 text-green-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -248,8 +245,8 @@
         </div>
         @endif
 
-        <!-- Content -->
-        <main class="flex-1 px-3 sm:px-4 lg:px-8 py-4 sm:py-6 w-full overflow-hidden">
+        
+        <main class="flex-1 px-3 sm:px-4 lg:px-8 py-4 sm:py-6 w-full">
             @yield('content')
         </main>
 

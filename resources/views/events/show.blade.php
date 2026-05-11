@@ -21,7 +21,7 @@
 @section('content')
     <div x-data="{ tab: 'overview' }">
 
-        {{-- Event Header --}}
+        
         <div class="card mb-4">
             <div class="flex flex-wrap items-start justify-between gap-4">
                 <div>
@@ -43,7 +43,7 @@
                         {{ __('Teilnehmer·innen') }} · {{ $event->getDurationDays() }} {{ __('Tag(e)') }}</p>
                 </div>
                 <div class="flex items-center gap-6">
-                    {{-- UZ62 Score --}}
+                    
                     <div class="text-center">
                         <div
                             class="text-2xl font-bold {{ $event->uz62_passed ? 'text-green-600' : ($event->uz62_percentage ? 'text-orange-500' : 'text-gray-400') }}">
@@ -56,7 +56,7 @@
                             <span class="badge-red mt-1">{{ __('Nicht bestanden') }}</span>
                         @endif
                     </div>
-                    {{-- CO2 --}}
+                    
                     <div class="text-center">
                         <div
                             class="text-2xl font-bold {{ $event->carbon_footprint_per_person <= 30 ? 'text-green-600' : ($event->carbon_footprint_per_person <= 100 ? 'text-yellow-600' : 'text-red-600') }}">
@@ -64,14 +64,14 @@
                         </div>
                         <div class="text-xs text-gray-500 mt-0.5">{{ __('kg CO₂/Person') }}</div>
                         @if ($event->carbon_footprint_per_person <= 30 && $event->carbon_footprint_per_person)
-                            <span class="badge-green mt-1">🌱 Green</span>
+                            <span class="badge-green mt-1"><svg class="w-4 h-4 inline-block text-green-500 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg> {{ __("Green") }}</span>
                         @endif
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- Module Navigation Tabs --}}
+        
         <div class="mb-4">
             <div class="flex flex-wrap gap-1 bg-white border border-gray-200 rounded-xl p-1">
                 @php
@@ -176,10 +176,10 @@
                 @endforeach
             </div>
         </div>
-        {{-- Overview Tab --}}
+        
         <div x-show="tab === 'overview'" x-cloak>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {{-- Module completion --}}
+                
                 <div class="card">
                     <h3 class="section-title">{{ __('Modul-Fortschritt') }}</h3>
                     @php
@@ -225,7 +225,7 @@
                     </div>
                 </div>
 
-                {{-- UZ62 Score breakdown --}}
+                
                 <div class="card">
                     <h3 class="section-title">{{ __('UZ 62 Bewertung') }}</h3>
                     @if ($event->latestUz62Score)
@@ -282,7 +282,7 @@
                     @endif
                 </div>
 
-                {{-- Carbon Footprint --}}
+                
                 <div class="card">
                     <h3 class="section-title">{{ __('CO₂-Fußabdruck') }}</h3>
                     @if ($event->latestCarbonReport)
@@ -328,14 +328,14 @@
                     @endif
                 </div>
 
-                {{-- Quick links to reports --}}
+                
                 <div class="card">
                     <h3 class="section-title">{{ __('Berichte & Exporte') }}</h3>
                     <div class="space-y-2">
                         <a href="{{ route('events.reports.uz62', $event) }}"
                             class="flex items-center justify-between p-3 rounded-lg border border-gray-100 hover:border-green-200 hover:bg-green-50 transition-colors group">
                             <div class="flex items-center gap-3">
-                                <span class="text-xl">📋</span>
+                                <span class="text-xl flex items-center"><svg class="w-6 h-6 text-green-600 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></span>
                                 <div>
                                     <div class="text-sm font-medium text-gray-900">{{ __('UZ 62 Scorecard') }}</div>
                                     <div class="text-xs text-gray-500">{{ __('Vollständige Bewertung aller Kriterien') }}
@@ -350,7 +350,7 @@
                         <a href="{{ route('events.reports.carbon', $event) }}"
                             class="flex items-center justify-between p-3 rounded-lg border border-gray-100 hover:border-green-200 hover:bg-green-50 transition-colors group">
                             <div class="flex items-center gap-3">
-                                <span class="text-xl">🌍</span>
+                                <span class="text-xl flex items-center"><svg class="w-6 h-6 text-green-600 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
                                 <div>
                                     <div class="text-sm font-medium text-gray-900">{{ __('CO₂-Fußabdruck') }}</div>
                                     <div class="text-xs text-gray-500">{{ __('Detaillierter Emissionsbericht') }}</div>
@@ -364,7 +364,7 @@
                         <a href="{{ route('events.reports.checklist.pdf', $event) }}"
                             class="flex items-center justify-between p-3 rounded-lg border border-gray-100 hover:border-green-200 hover:bg-green-50 transition-colors group">
                             <div class="flex items-center gap-3">
-                                <span class="text-xl">📄</span>
+                                <span class="text-xl flex items-center"><svg class="w-6 h-6 text-red-600 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span>
                                 <div>
                                     <div class="text-sm font-medium text-gray-900">
                                         {{ __('Green Events Checkliste (PDF)') }}</div>
@@ -382,7 +382,7 @@
             </div>
         </div>
 
-        {{-- Module Tabs (each links to dedicated module page) --}}
+        
         @php
             $moduleLabels = [
                 'mobility' => __('Modul 1 – Mobilität & Klimaschutz'),
@@ -416,12 +416,12 @@
             </div>
         @endforeach
 
-        {{-- Reports Tab --}}
+        
         <div x-show="tab === 'reports'" x-cloak>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <a href="{{ route('events.reports.uz62', $event) }}" class="card hover:shadow-md transition-shadow">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-2xl">📋</div>
+                        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center"><svg class="w-6 h-6 text-green-600 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
                         <div>
                             <h4 class="font-semibold text-gray-900">{{ __('UZ 62 Scorecard') }}</h4>
                             <p class="text-xs text-gray-500 mt-1">{{ __('Alle Kriterien, MUSS-Prüfung, Punktestand') }}
@@ -431,7 +431,7 @@
                 </a>
                 <a href="{{ route('events.reports.carbon', $event) }}" class="card hover:shadow-md transition-shadow">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-2xl">🌍</div>
+                        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center"><svg class="w-6 h-6 text-green-600 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
                         <div>
                             <h4 class="font-semibold text-gray-900">{{ __('CO₂-Fußabdruck') }}</h4>
                             <p class="text-xs text-gray-500 mt-1">{{ __('Emissionen nach Kategorien') }}</p>
@@ -440,7 +440,7 @@
                 </a>
                 <a href="{{ route('events.reports.uz62.pdf', $event) }}" class="card hover:shadow-md transition-shadow">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-2xl">📄</div>
+                        <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center"><svg class="w-6 h-6 text-red-600 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
                         <div>
                             <h4 class="font-semibold text-gray-900">{{ __('UZ 62 Report (PDF)') }}</h4>
                             <p class="text-xs text-gray-500 mt-1">{{ __('Druckbarer Bewertungsbericht') }}</p>
@@ -450,7 +450,7 @@
                 <a href="{{ route('events.reports.carbon.pdf', $event) }}"
                     class="card hover:shadow-md transition-shadow">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-2xl">📄</div>
+                        <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center"><svg class="w-6 h-6 text-red-600 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
                         <div>
                             <h4 class="font-semibold text-gray-900">{{ __('CO₂-Report (PDF)') }}</h4>
                             <p class="text-xs text-gray-500 mt-1">{{ __('Druckbarer Emissionsbericht') }}</p>
@@ -460,7 +460,7 @@
                 <a href="{{ route('events.reports.checklist.pdf', $event) }}"
                     class="card hover:shadow-md transition-shadow">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center text-2xl">✅</div>
+                        <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center"><svg class="w-6 h-6 text-yellow-600 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
                         <div>
                             <h4 class="font-semibold text-gray-900">{{ __('Green Events Checkliste (PDF)') }}</h4>
                             <p class="text-xs text-gray-500 mt-1">{{ __('Ausgefüllte Einreichcheckliste') }}</p>
@@ -470,7 +470,7 @@
             </div>
         </div>
 
-        {{-- Documents Tab --}}
+        
         <div x-show="tab === 'documents'" x-cloak>
             <div class="card">
                 <h3 class="section-title">{{ __('Dokumente hochladen') }}</h3>
@@ -533,7 +533,7 @@
             </div>
         </div>
 
-    </div>{{-- end x-data --}}
+    </div>
 
 @endsection
 @push('scripts')

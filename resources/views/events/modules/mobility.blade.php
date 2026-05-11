@@ -12,7 +12,7 @@
         @csrf @method('PUT')
         <div class="space-y-6">
 
-            {{-- MUSS: Erreichbarkeit --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('mobility.accessibility_title') }} <span
                         class="muss-badge">{{ __('Must') }}</span></h3>
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            {{-- Fahrrad-Infrastruktur --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('mobility.bike_infra_title') }}</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            {{-- Transport Incentives --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('mobility.incentives_title') }}</h3>
                 <div class="mb-4">
@@ -109,7 +109,7 @@
                 </div>
             </div>
 
-            {{-- Modal Split --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('mobility.modal_split_title') }} <span class="soll-badge">+1,5 P</span>
                 </h3>
@@ -129,7 +129,7 @@
                 </div>
             </div>
 
-            {{-- GHG Compensation --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('mobility.ghg_title') }}</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
@@ -156,7 +156,7 @@
                 </div>
             </div>
 
-            {{-- Hybrid --}}
+            
             @if ($event->is_hybrid)
                 <div class="card border-2 border-blue-200 bg-blue-50">
                     <h3 class="section-title text-blue-800">{{ __('mobility.hybrid_title') }} <span

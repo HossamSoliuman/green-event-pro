@@ -12,7 +12,7 @@
         @csrf @method('PUT')
         <div class="space-y-6">
 
-            {{-- Caterer Info --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('catering.caterer_info') }}</h3>
                 <div class="grid grid-cols-2 gap-4 mb-4">
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            {{-- MUSS Criteria --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('catering.muss_title') }} <span
                         class="muss-badge">{{ __('muss_required') }}</span></h3>
@@ -93,7 +93,7 @@
                 </div>
             </div>
 
-            {{-- Bio-Anteil --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('catering.bio_share_title') }}</h3>
                 <div class="space-y-3">
@@ -107,7 +107,7 @@
                 </div>
             </div>
 
-            {{-- Vegetarisch/Vegan --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('catering.veg_vegan_title') }}</h3>
                 <div class="grid grid-cols-2 gap-3">
@@ -126,7 +126,7 @@
                 </div>
             </div>
 
-            {{-- Fairtrade --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('catering.fairtrade_title') }}</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -140,7 +140,7 @@
                 </div>
             </div>
 
-            {{-- Additional SOLL --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('catering.additional_soll_title') }}</h3>
                 <div class="grid grid-cols-2 gap-3">
@@ -161,7 +161,7 @@
                 </div>
             </div>
 
-            {{-- Food Stands --}}
+            
             <div class="card">
                 <h3 class="section-title">{{ __('catering.food_stands_title') }}</h3>
                 <div class="mb-4">

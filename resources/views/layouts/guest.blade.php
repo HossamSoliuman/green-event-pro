@@ -19,7 +19,7 @@
             <h1 class="text-2xl font-bold text-gray-900">GreenEventPro</h1>
             <p class="text-sm text-gray-500 mt-1">{{ __('Sustainable Events · UZ 62 Certification') }}</p>
             
-            <!-- Language Switcher -->
+            
             <div class="flex items-center justify-center gap-2 mt-4">
                 <a href="{{ route('locale.switch', 'de') }}" 
                    class="px-2 py-1 text-xs font-semibold rounded-md transition-colors {{ app()->getLocale() == 'de' ? 'bg-green-600 text-white shadow-sm' : 'text-gray-500 hover:text-gray-700 bg-gray-100' }}">

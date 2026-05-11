@@ -8,7 +8,7 @@
         <p class="text-xs text-gray-500 mt-1">{{ __('accommodation.criteria_hint') }}</p>
     </div>
 
-    {{-- Add hotel form --}}
+    
     <div class="card mb-6" x-data="{ open: false }">
         <div class="flex items-center justify-between">
             <h3 class="text-base font-semibold text-gray-900">{{ __('accommodation.add_title') }}</h3>
@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    {{-- Accommodations list --}}
+    
     @if ($accommodations->isEmpty())
         <div class="card text-center py-8 text-gray-400">
             <p class="text-sm">{{ __('accommodation.empty') }}</p>
@@ -120,7 +120,7 @@
             @endforeach
         </div>
 
-        {{-- Points summary --}}
+        
         @php
             $totalPoints = 0;
             foreach ($accommodations as $h) {

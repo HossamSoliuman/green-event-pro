@@ -10,7 +10,7 @@
 @endsection
 @section('content')
 
-{{-- Summary KPIs --}}
+
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
     @php
     $perPersonClass = $report->co2_per_person <= 30 ? 'text-green-600' : ($report->co2_per_person <= 100 ? 'text-yellow-600' : 'text-red-600');
@@ -39,13 +39,13 @@
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-    {{-- Bar chart --}}
+    
     <div class="card">
         <h3 class="section-title">CO₂ nach Kategorien</h3>
         <canvas id="carbonBarChart" height="220"></canvas>
     </div>
 
-    {{-- Comparison --}}
+    
     <div class="card">
         <h3 class="section-title">Vergleich mit Benchmarks</h3>
         <div class="space-y-4">
@@ -77,7 +77,7 @@
     </div>
 </div>
 
-{{-- Detailed breakdown table --}}
+
 <div class="card">
     <h3 class="section-title">Detaillierte CO₂-Aufschlüsselung</h3>
     <table class="w-full text-sm">
