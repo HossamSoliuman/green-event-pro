@@ -29,7 +29,7 @@ GreenEventPro is a multi-tenant SaaS platform for event organizers to:
 
 ```bash
 # 1. Clone and install PHP dependencies
-git clone <repo>
+git clone <https://github.com/HossamSoliuman/green-event-pro.git>
 cd greenevents
 composer install
 
@@ -37,19 +37,13 @@ composer install
 cp .env.example .env
 php artisan key:generate
 
-# 3. Configure database in .env
-DB_DATABASE=greenevents
-DB_USERNAME=root
-DB_PASSWORD=yourpassword
 
-# 4. Run migrations and seed demo data
+# 3. Run migrations and seed demo data
 php artisan migrate
 php artisan db:seed
 
-# 5. Install frontend assets (optional – CDN used by default)
-npm install && npm run build
 
-# 6. Start server
+# 4. Start server
 php artisan serve
 ```
 
